@@ -2,22 +2,19 @@ class Solution {
 public:
     bool isPalindrome(int x) {
 
-        if(x < 0){
-            return false;
+        string s = to_string(x);
+
+        int left = 0;
+        int right = s.length() - 1;
+
+        while(left < right){
+            if(s[left] != s[right]){
+                return false;
+            }
+            left++;
+            right--;
         }
 
-        int original = x;
-        long reverse = 0;
-
-        while(x != 0){
-            int lastDigit = x % 10;
-            reverse = reverse * 10 + lastDigit;
-            x = x / 10;
-        }
-        if(original == reverse){
-            return true;
-        }else{
-            return false;
-        }
-        }
+        return true;
+    }
 };
