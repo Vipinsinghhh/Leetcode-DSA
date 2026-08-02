@@ -1,51 +1,32 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-    int i = 0;
-    int j = nums.size() - 1;
+    int count0 = 0, count1 = 0, count2 = 0;
 
-    // Move all 0's to the left
-    while (i < j)
-    {
-        if (nums[i] == 0)
-        {
-            i++;
+        // Count the frequency of 0s, 1s, and 2s in the array
+        for(int i = 0; i < nums.size(); i++) {
+            if(nums[i] == 0) count0++;
+            else if(nums[i] == 1) count1++;
+            else count2++;
         }
-        else if (nums[j] != 0)
-        {
-            j--;
+
+        // Overwrite the array with the counted values
+        int index = 0;
+
+        // Fill with 0s
+        while(count0--) {
+            nums[index++] = 0;
         }
-        else
-        {
-            swap(nums[i], nums[j]);
-            i++;
-            j--;
+
+        // Fill with 1s
+        while(count1--) {
+            nums[index++] = 1;
+        }
+
+        // Fill with 2s
+        while(count2--) {
+            nums[index++] = 2;
         }
     }
-
-    // Move all 2's to the right
-    i = 0;
-    j = nums.size() - 1;
-
-    while (i < j)
-    {
-        if (nums[j] == 2)
-        {
-            j--;
-        }
-        else if (nums[i] != 2)
-        {
-            i++;
-        }
-        else
-        {
-            swap(nums[i], nums[j]);
-            i++;
-            j--;
-        }
-    }
-}
-
-        
     
 };
